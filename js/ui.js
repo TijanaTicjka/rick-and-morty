@@ -1,11 +1,13 @@
 "use strict"
 const uiModule = (function () {
     const mainRow = document.querySelector("#mainRow");
-    const nextButton = document.getElementById("next");
-    const mainLink = document.getElementById("mainLink")
+    const previousButton = document.querySelector("#previous");
+    const nextButton = document.querySelector("#next");
 
-    const renderHomePage = (arr) => {
-        arr.forEach(element => {
+    const renderFirstPage = (arr) => {
+      mainRow.innerHTML = "";
+        arr.slice(0,6).forEach(element => {
+            
             const divCharacter = `<div class=" animation card pt-3 shadow-lg p-3 mb-5 bg-body rounded text-center animate__animated animate__pulse" style="width:18rem;">
             <img src=${element.image} class="card-img-top img-thumbnail" alt="...">
             <div class="card-body">
@@ -14,11 +16,13 @@ const uiModule = (function () {
             </div>`
             mainRow.innerHTML += divCharacter;
         });
+        previousButton.style.visibility = "hidden";
+        nextButton.style.visibility = "visible";
     }
 
     const renderSecondPage = (arr) => {
         mainRow.innerHTML = "";
-        arr.forEach(element => {
+        arr.slice(6,12).forEach(element => {
             const divCharacter = `<div class=" animation card pt-3 shadow-lg p-3 mb-5 bg-body rounded text-center animate__animated animate__pulse" style="width:18rem;">
             <img src=${element.image} class="card-img-top img-thumbnail" alt="...">
             <div class="card-body">
@@ -27,15 +31,13 @@ const uiModule = (function () {
             </div>`
             mainRow.innerHTML += divCharacter;
         });
-        const previous = `<a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span> Previous
-      </a>`;
-      mainLink.innerHTML += previous;
+        previousButton.style.visibility = "visible"
+        nextButton.style.visibility = "visible";
     }
     
     const renderThirdPage = (arr) => {
         mainRow.innerHTML = "";
-        arr.forEach(element => {
+        arr.slice(12,20).forEach(element => {
             const divCharacter = `<div class=" animation card pt-3 shadow-lg p-3 mb-5 bg-body rounded text-center animate__animated animate__pulse" style="width:18rem;">
             <img src=${element.image} class="card-img-top img-thumbnail" alt="...">
             <div class="card-body">
@@ -44,14 +46,11 @@ const uiModule = (function () {
             </div>`
             mainRow.innerHTML += divCharacter;
         });
-        const previous = `<a class="page-link" href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span> Previous
-      </a>`;
-
+        nextButton.style.visibility = "hidden"
     }
 
     return {
-        renderHomePage,
+        renderFirstPage,
         renderSecondPage,
         renderThirdPage
     }

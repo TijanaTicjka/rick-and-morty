@@ -1,7 +1,9 @@
 body{
     background-image: url(./401059.png);
-    _background-image: url(./238257.jpg);
-   _background-image: url(./238256.jpg);
-   background-position: center;
-   background-size: cover;
+    background-position: center;
+    background-size: cover;
+}
+
+#previous{
+    visibility: hidden;
 }

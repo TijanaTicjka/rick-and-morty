@@ -1,5 +1,10 @@
 "use strict";
 const dataModule = (function () {
+    const state = {
+        currentPage: 1,
+        //allCharacters: []
+    };
+
     class Character {
         constructor(id, name, image) {
            this.id = id,
@@ -7,50 +12,21 @@ const dataModule = (function () {
            this.image = image
         }
     } 
-
-    const getFirstPageCharacters = () => {
+    const getAllCharacters = () => {
       return fetch("https://rickandmortyapi.com/api/character")
         .then(res => res.json())
         .then(res => {
-            console.log(res);
             const allCharacters = [];
-            res.results.slice(0,6).map(character => {
+            res.results.map(character => {
                 const createdCharacter = new Character(character.id, character.name, character.image);
                 allCharacters.push(createdCharacter)});
                 return allCharacters
             })
         }
-    
-    const getSecondPageCharacters = () => {
-        return fetch("https://rickandmortyapi.com/api/character")
-          .then(res => res.json())
-          .then(res => {
-            const allCharacters = [];
-                res.results.slice(6,12).map(character => {
-                    const createdCharacter = new Character(character.id, character.name, character.image);
-                    allCharacters.push(createdCharacter)});
-                    return allCharacters
-            })
-        
-        }
-    const getThirdPageCharacters = () => {
-        return fetch("https://rickandmortyapi.com/api/character")
-            .then(res => res.json())
-            .then(res => {
-            const allCharacters = [];
-                res.results.slice(12,18).map(character => {
-                    const createdCharacter = new Character(character.id, character.name, character.image);
-                    allCharacters.push(createdCharacter)});
-                    return allCharacters
-            })
-            
-        }
-    
 
     return {
-        getFirstPageCharacters,
-        getSecondPageCharacters,
-        getThirdPageCharacters
+       state,
+       getAllCharacters
     }
     
 })()

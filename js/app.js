@@ -1,32 +1,57 @@
 "use strict";
 (function (data,ui) {
-    const mainRow = document.querySelector("#mainRow");
     const nextButton = document.getElementById("next");
+    const previousButton = document.getElementById("previous")
     
-
     const fillFirstPage = () => {
-         data.getFirstPageCharacters()
-         .then(res => ui.renderHomePage(res));
+         data.getAllCharacters()
+         .then(res => {
+            ui.renderFirstPage(res);
+        });
     
         }
     fillFirstPage();
 
+
     const fillSecondPage = () => {
-        data.getSecondPageCharacters()
-          .then(res => ui.renderSecondPage(res));
+        data.getAllCharacters()
+          .then(res => {
+            ui.renderSecondPage(res)
+            data.state.currentPage = 2;
+          
+    });
     }
-
-    nextButton.addEventListener("click", fillSecondPage)
-
-
     const fillThirdPage = () => {
-        if(fillSecondPage()) {
-            data.getThirdPageCharacters()
-           .then(res => ui.renderThirdPage(res))
-        }
+            data.getAllCharacters()
+           .then(res => {
+            data.state.currentPage = 3;
+            ui.renderThirdPage(res)})
     }
 
-    //nextButton.addEventListener("click", fillThirdPage)
+
+    nextButton.addEventListener("click", () => {
+        if(data.state.currentPage === 1) {
+            fillSecondPage();
+        } else if(data.state.currentPage === 2){
+            fillThirdPage()
+        }
+    })
+
+    previousButton.addEventListener("click", () => {
+        if(data.state.currentPage === 3) {
+            fillSecondPage();
+        } else if (data.state.currentPage === 2) {
+            fillFirstPage();
+            data.state.currentPage = 1;
+        }
+    })
+      
+      
+      
+      
+      
+
+
     
 
     })(dataModule,uiModule)
