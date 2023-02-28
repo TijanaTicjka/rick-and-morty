@@ -1,9 +1,12 @@
-body{
-    background-image: url(./401059.png);
-    background-position: center;
+body {
+    background: url(./401059.png) no-repeat center center fixed;
     background-size: cover;
 }
 
 #previous{
-    visibility: hidden;
+    display: none;
 }
+#next{
+    width:6.4rem;
+}
+

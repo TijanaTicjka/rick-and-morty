@@ -1,57 +1,59 @@
 "use strict"
 const uiModule = (function () {
     const mainRow = document.querySelector("#mainRow");
-    const previousButton = document.querySelector("#previous");
-    const nextButton = document.querySelector("#next");
-
-    const renderFirstPage = (arr) => {
+    const renderHomePage = (arr) => {
       mainRow.innerHTML = "";
-        arr.slice(0,6).forEach(element => {
-            
-            const divCharacter = `<div class=" animation card pt-3 shadow-lg p-3 mb-5 bg-body rounded text-center animate__animated animate__pulse" style="width:18rem;">
-            <img src=${element.image} class="card-img-top img-thumbnail" alt="...">
-            <div class="card-body">
+        arr.forEach(element => {
+            const divCharacter = `<div id=${element.id} class=" animation card pt-3 shadow-lg p-3 mb-5 bg-body rounded text-center animate__animated animate__pulse" style="width:15rem;">
+            <img src=${element.image} id=${element.id} class="card-img-top img-thumbnail " alt="...">
+            <div class="card-body id=${element.id}">
               <h6 id=${element.id} class="card-title text-primary">${element.name}</h6>
+              <button class="like btn btn-outline-primary"><span class="bi bi-heart"></span> Like</button>
             </div>
             </div>`
             mainRow.innerHTML += divCharacter;
         });
-        previousButton.style.visibility = "hidden";
-        nextButton.style.visibility = "visible";
     }
 
-    const renderSecondPage = (arr) => {
-        mainRow.innerHTML = "";
-        arr.slice(6,12).forEach(element => {
-            const divCharacter = `<div class=" animation card pt-3 shadow-lg p-3 mb-5 bg-body rounded text-center animate__animated animate__pulse" style="width:18rem;">
-            <img src=${element.image} class="card-img-top img-thumbnail" alt="...">
+    const likeOrUnlike = (event) => {
+      const element = event.target;
+      console.log(element);
+      if(element.classList.contains("like")){
+      element.classList.toggle("btn-primary");
+      element.classList.toggle("text-white");
+      if(element.classList.contains("btn-primary")) {
+        element.innerHTML = "";
+        element.innerHTML = `<span class="bi bi-heart"></span> Unlike`;
+      } else {
+        element.innerHTML = "";
+        element.innerHTML = `<span class="bi bi-heart"></span> Like`;
+      }
+    }
+  }
+
+  const fillDetailedPage = (c) => {
+    mainRow.innerHTML = "";
+    let characterName = c.name;
+    let colomsForDetails = `
+    <div class="row">
+       <div class="col">
+         <div class="card animation pt-3 shadow-lg p-3 mb-5 bg-body rounded text-center animate__animated animate__pulse">
+            <h4>${characterName}</h4>
+            <img src="${c.image}" class="card mt-3" id=${c.id}>
             <div class="card-body">
-              <h6 id=${element.id} class="card-title text-primary">${element.name}</h6>
-            </div>
-            </div>`
-            mainRow.innerHTML += divCharacter;
-        });
-        previousButton.style.visibility = "visible"
-        nextButton.style.visibility = "visible";
+               <h5 class="card-title">Episode(${c.episode})</h5>
+       </div>
+    </div>
+    </div>
+    </div>`
+    
+    mainRow.innerHTML = colomsForDetails;
+ }
+  
+    return {
+        renderHomePage,
+        likeOrUnlike,
+        fillDetailedPage
     }
     
-    const renderThirdPage = (arr) => {
-        mainRow.innerHTML = "";
-        arr.slice(12,20).forEach(element => {
-            const divCharacter = `<div class=" animation card pt-3 shadow-lg p-3 mb-5 bg-body rounded text-center animate__animated animate__pulse" style="width:18rem;">
-            <img src=${element.image} class="card-img-top img-thumbnail" alt="...">
-            <div class="card-body">
-              <h6 id=${element.id} class="card-title text-primary">${element.name}</h6>
-            </div>
-            </div>`
-            mainRow.innerHTML += divCharacter;
-        });
-        nextButton.style.visibility = "hidden"
-    }
-
-    return {
-        renderFirstPage,
-        renderSecondPage,
-        renderThirdPage
-    }
 })()
