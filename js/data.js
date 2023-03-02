@@ -2,9 +2,9 @@
 const dataModule = (function () {
     const state = {
         currentPage:"https://rickandmortyapi.com/api/character?page=1",
-        allPages: 42,
         next :"https://rickandmortyapi.com/api/character?page=2",
-        prev: null
+        prev: null,
+        lastPage: "https://rickandmortyapi.com/api/character?page=42"
     };
 
     class Character {
@@ -17,7 +17,7 @@ const dataModule = (function () {
            this.gender = gender,
            this.episode = episode
         }
-    } 
+    }
 
     const getCharactersPerPage = (input = state.currentPage) => {
          return fetch(input).then(res => res.json())
@@ -37,7 +37,6 @@ const dataModule = (function () {
         .then(res => res.json())
         .then (res => {
             const createdCharacter = new Character(res.id, res.name, res.image, res.species, res.status, res.gender, res.episode.length);
-            console.log(createdCharacter);
             return createdCharacter;
         })
     }
@@ -46,7 +45,7 @@ const dataModule = (function () {
     return {
        state,
        getCharactersPerPage,
-       getSingleCharacter 
+       getSingleCharacter,
     }
     
 })()

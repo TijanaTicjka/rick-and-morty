@@ -1,24 +1,30 @@
 "use strict"
 const uiModule = (function () {
-    const mainRow = document.querySelector("#mainRow");
-    const renderHomePage = (arr) => {
-      mainRow.innerHTML = "";
-        arr.forEach(element => {
-            const divCharacter = `<div id=${element.id} class=" animation card pt-3 shadow-lg p-3 mb-5 bg-body rounded text-center animate__animated animate__pulse" style="width:15rem;">
-            <img src=${element.image} id=${element.id} class="card-img-top img-thumbnail " alt="...">
-            <div class="card-body id=${element.id}">
-              <h6 id=${element.id} class="card-title text-primary">${element.name}</h6>
-              <button class="like btn btn-outline-primary"><span class="bi bi-heart"></span> Like</button>
-            </div>
-            </div>`
-            mainRow.innerHTML += divCharacter;
-        });
-    }
+  const mainRow = document.querySelector("#mainRow");
+  const nextButton = document.getElementById("next");
+  const previousButton = document.getElementById("previous");
+  const back = document.getElementById("back");
 
-    const likeOrUnlike = (event) => {
-      const element = event.target;
-      console.log(element);
-      if(element.classList.contains("like")){
+  const renderHomePage = (arr) => {
+    nextButton.removeAttribute("id");
+    previousButton.removeAttribute("id");
+    mainRow.classList.remove("ops")
+    mainRow.innerHTML = "";
+    arr.forEach(element => {
+      const divCharacter = `<div id=${element.id} class=" animation card pt-3 shadow-lg p-3 mb-5 bg-body rounded text-center animate__animated animate__pulse" style="width:15rem;">
+        <img src=${element.image} id=${element.id} class="card-img-top img-thumbnail " alt="...">
+        <div class="card-body id=${element.id}">
+          <h6 id=${element.id} class="card-title text-primary">${element.name}</h6>
+          <button class="like btn btn-outline-primary"><span class="bi bi-heart"></span> Like</button>
+        </div>
+      </div>`
+      mainRow.innerHTML += divCharacter;
+    });
+  }
+
+  const likeOrUnlike = (event) => {
+    const element = event.target;
+    if(element.classList.contains("like")){
       element.classList.toggle("btn-primary");
       element.classList.toggle("text-white");
       if(element.classList.contains("btn-primary")) {
@@ -33,27 +39,37 @@ const uiModule = (function () {
 
   const fillDetailedPage = (c) => {
     mainRow.innerHTML = "";
-    let characterName = c.name;
+    back.innerHTML = "Back to page";
+    nextButton.setAttribute("id",(c.id+1));
+    previousButton.style.display="block";
+    nextButton.style.display="block";
+    previousButton.setAttribute("id", (c.id-1))
     let colomsForDetails = `
-    <div class="row">
-       <div class="col">
-         <div class="card animation pt-3 shadow-lg p-3 mb-5 bg-body rounded text-center animate__animated animate__pulse">
-            <h4>${characterName}</h4>
-            <img src="${c.image}" class="card mt-3" id=${c.id}>
-            <div class="card-body">
-               <h5 class="card-title">Episode(${c.episode})</h5>
-       </div>
-    </div>
-    </div>
-    </div>`
-    
+      <h4 class="card-title text-center text-primary pt-3 word-wrap">${c.name}</h4>
+      <div class="col-md-8 p-3 bg-body rounded">
+        <img src=${c.image} class="card-img-top img-thumbnail" alt="..."style="height:100%" style="width:100%;">
+      </div>
+      <div class="col-md-8 p-3 rounded mb-5 bg-white">
+        <ul class="p-1 word-wrap list-group img-thumbnail list-group-flush text-center rounded" style="width:100%">
+          <li class="list-group-item list-group-item-warning">${c.status}</li>`
+        if(c.gender === "Male"){colomsForDetails += `<li class="list-group-item list-group-item-primary">${c.gender}</li>`} else if (c.gender === "Female"){colomsForDetails += `<li class="list-group-item list-group-item-danger">${c.gender}</li>`} else {colomsForDetails += `<li class="list-group-item list-group-item-light">${c.gender}</li>`}
+        if(c.species === "Alive"){colomsForDetails += `<li class="list-group-item list-group-item-success">${c.species}</li>`} else {colomsForDetails += `<li class="list-group-item list-group-item-dark">${c.species}</li>`}
+        colomsForDetails += `<li class="list-group-item list-group-item-info">Number of episodes: ${c.episode}</li>
+        </ul></div>`
+
     mainRow.innerHTML = colomsForDetails;
- }
+    mainRow.classList.add("ops");
+  }
+
+  const changeBackButton = () => {
+    back.innerHTML = "Rick & Morty Wiki"
+  }
   
-    return {
-        renderHomePage,
-        likeOrUnlike,
-        fillDetailedPage
-    }
+  return {
+    renderHomePage,
+    likeOrUnlike,
+    fillDetailedPage,
+    changeBackButton 
+  }
     
 })()
