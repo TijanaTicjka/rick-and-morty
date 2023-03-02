@@ -11,8 +11,8 @@ const uiModule = (function () {
     mainRow.classList.remove("ops")
     mainRow.innerHTML = "";
     arr.forEach(element => {
-      const divCharacter = `<div id=${element.id} class=" animation card pt-3 shadow-lg p-3 mb-5 bg-body rounded text-center animate__animated animate__pulse" style="width:15rem;">
-        <img src=${element.image} id=${element.id} class="card-img-top img-thumbnail " alt="...">
+      const divCharacter = `<div id=${element.id} class=" animation card pt-3  bg-body rounded text-center animate__animated animate__pulse" style="width:14rem;">
+        <img src=${element.image} id=${element.id} class="card-img-top   img-thumbnail " alt="...">
         <div class="card-body id=${element.id}">
           <h6 id=${element.id} class="card-title text-primary">${element.name}</h6>
           <button class="like btn btn-outline-primary"><span class="bi bi-heart"></span> Like</button>
@@ -45,11 +45,11 @@ const uiModule = (function () {
     nextButton.style.display="block";
     previousButton.setAttribute("id", (c.id-1))
     let colomsForDetails = `
-      <h4 class="card-title text-center text-primary pt-3 word-wrap">${c.name}</h4>
-      <div class="col-md-8 p-3 bg-body rounded">
-        <img src=${c.image} class="card-img-top img-thumbnail" alt="..."style="height:100%" style="width:100%;">
+      <h4 class="card-title text-center text-primary pt-3 word-wrap fw-bold">${c.name}</h4>
+      <div class="col-md-8 bg-body p-2 rounded">
+        <img src=${c.image} class="card-img-top rounded img-thumbnail" alt="..."style="height:100%" style="width:100%;">
       </div>
-      <div class="col-md-8 p-3 rounded mb-5 bg-white">
+      <div class="col-md-8 bg-body p-2 rounded mb-5 bg-white">
         <ul class="p-1 word-wrap list-group img-thumbnail list-group-flush text-center rounded" style="width:100%">
           <li class="list-group-item list-group-item-warning">${c.status}</li>`
         if(c.gender === "Male"){colomsForDetails += `<li class="list-group-item list-group-item-primary">${c.gender}</li>`} else if (c.gender === "Female"){colomsForDetails += `<li class="list-group-item list-group-item-danger">${c.gender}</li>`} else {colomsForDetails += `<li class="list-group-item list-group-item-light">${c.gender}</li>`}

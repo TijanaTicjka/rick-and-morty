@@ -3,125 +3,108 @@ body {
     background-size: cover;
 }
 
-#previous{
+#previous {
     display: none;
 }
 
-#next{
+#next {
     width:6.4rem;
 }
 
-#details{
+#details {
     width: 50%;
 }
 
-.ops{
+.ops {
     background-image: var(--bs-gradient);
-    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.2));
-    border-radius: 6px;
+    --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2));
+    border-radius: 1%;
     display:flex;
-    width: 70%;
-    padding: 0;
-    min-height: 800px;
-    margin-bottom: 25rem;
-    margin-top: 2rem;
+    _width: 70%;
 }
 
-.col-md-8{
-    width: 40rem;
+.col-md-8 {
+    width: 30rem;
+}
+
+footer {
+    margin-top: 30em;
+}
+
+img {
+    cursor: pointer;
 }
 
 @media screen and (max-width:2560px){
-    .col-md-8{
-        width: 30rem;
+    .col-md-8 {
+       _width: 30rem;
     }
 
-    .ops{
-        width: 70%;
+    .ops {
+        width: 80%;
         padding: 0 3rem;
     }
 
-    h4{
-        _font-size: 1.3em;
-    }
-
-    body{
+    body {
         font-size: 1.4em;
     }
 
     .page-link {
-        padding: 1rem;
+        padding: 0.5rem;
         font-size: 1.4rem;
-        width: 10rem;
+        width: 8rem;
         text-align: center;
     }
 }
 
 @media screen and (max-width: 1440px){
     .page-link {
-        padding: 0.6rem;
+        padding: 0.4rem;
         font-size: 1.1rem;
-        width: 8rem;
+        width: 6.5rem;
         text-align: center;
     }
 
-    body{
+    body {
         font-size: 1.2em;
     }
 }
 
 @media screen and (max-width: 1024px){
-    .page-link {
-        padding: 0.8rem;
-        font-size: 1.1rem;
-        width: 7rem;
-        text-align: center;
-
+    .ops {
+        width: 1000%;
     }
+}
 
-    body{
-        font-size: 1.2em;
-    }
-
-    .ops{
-        width: 90%;
+@media screen and (max-width: 768){
+    footer {
+        margin-top: 30em;;
     }
     
-}
-@media screen and (max-width: 768x){
-   
-    .ops{
-        width: 90%;
-        min-height: 300px;
-    }
-
-    h4{
-       _height: 1rem;
-    }
-   
 }
 
 @media screen and (max-width: 560px){
     .page-link {
-        padding: 0.7rem;
-        font-size: 0.8rem;
+        _padding: 0.4rem;
+        font-size: 0.9rem;
         width: 6rem;
         text-align: center;
     }
 
-    body{
+    body {
         font-size: 1em;
     }
 
-    .ops{
-        width: 90%;
+    .ops {
         padding: 0;
-        min-height: 250px;
-        margin-bottom: 35rem;
     }
 
-    .col-md-8{
+    .col-md-8 {
         width: 90%;
+    }
+
+    footer {
+        margin-top: 35em;;
     }
 }
     
