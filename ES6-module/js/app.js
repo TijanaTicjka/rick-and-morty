@@ -103,12 +103,9 @@ home.addEventListener("click", () => {
   state.currentPage = "https://rickandmortyapi.com/api/character?page=1";
   let p = state.currentPage;
   getCharactersPerPage(p).then(res => {
-    ui.renderHomePage(res);
-    ui.changeBackButton();
+    renderHomePage(res);
+    changeBackButton();
   })
   previousButton.style.display = "none";
   nextButton.style.display = "block";
 });
-
-
-     
