@@ -22,16 +22,15 @@ const renderHomePage = (arr) => {
 
 const likeOrUnlike = (event) => {
   const element = event.target;
-  if(element.classList.contains("like")){
-    element.classList.toggle("btn-primary");
-    element.classList.toggle("text-white");
-    if(element.classList.contains("btn-primary")) {
-      element.innerHTML = "";
-      element.innerHTML = `<span class="bi bi-heart"></span> Unlike`;
-    } else {
-      element.innerHTML = "";
-      element.innerHTML = `<span class="bi bi-heart"></span> Like`;
-    }
+  element.classList.toggle("btn-primary");
+  if (element.classList.contains("btn-primary")) {
+    element.classList.remove("btn-outline-primary");
+    element.innerHTML = "";
+    element.innerHTML = `<span class="bi bi-heart"></span> Unlike`;
+  } else {
+    element.classList.add("btn-outline-primary");
+    element.innerHTML = "";
+    element.innerHTML = `<span class="bi bi-heart"></span> Like`;
   }
 }
 

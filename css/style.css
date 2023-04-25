@@ -31,28 +31,27 @@ footer {
     width: 50%;
 }
 
+.btn-outline-primary {
+    --bs-btn-hover-color: #0d6efd;
+    --bs-btn-hover-bg: #fff;
+}
+
 .ops {
     background-image: var(--bs-gradient);
     --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.2));
     border-radius: 1%;
     display: flex;
-    _width: 70%;
 }
 
 .col-md-8 {
     width: 30rem;
 }
 
-
 img {
     cursor: pointer;
 }
 
 @media screen and (max-width:2560px) {
-    .col-md-8 {
-        _width: 30rem;
-    }
-
     .ops {
         width: 80%;
         padding: 0 3rem;
@@ -91,7 +90,6 @@ img {
 
 @media screen and (max-width: 560px) {
     .page-link {
-        _padding: 0.4rem;
         font-size: 0.9rem;
         width: 6rem;
         text-align: center;
@@ -109,10 +107,3 @@ img {
         width: 90%;
     }
 }
-    
-    
-
-    
-
-  
-
