@@ -19,12 +19,12 @@ Rick and Morty is a single-page web application that allows users to browse and 
 
 ### Technologies Used
 
-HTML
-CSS
-JavaScript
-Bootstrap
-Fetch API
-Rick and Morty API
+- HTML
+- CSS
+- JavaScript
+- Bootstrap
+- Fetch API
+- Rick and Morty API
 
 ### Deployment
 
