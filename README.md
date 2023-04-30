@@ -30,4 +30,4 @@ Rick and Morty API
 
 The project has been deployed on Netlify and is accessible at the following URL:
 
-https://your-rick-and-morty-url.netlify.app
+https://tijanamilenkovic-rick-and-morty.netlify.app
