@@ -28,6 +28,4 @@ Rick and Morty is a single-page web application that allows users to browse and 
 
 ### Deployment
 
-The project has been deployed on Netlify and is accessible at the following URL:
-
-https://tijanamilenkovic-rick-and-morty.netlify.app
+The project is deployed and can be accessed [here](https://tijanamilenkovic-rick-and-morty.netlify.app).
